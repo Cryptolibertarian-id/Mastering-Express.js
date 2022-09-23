@@ -57,6 +57,54 @@ $ yarn add @types/node @types/express -D
 
 
 
+---
+
+
+
+## Setup Typescript Configs
+
+To start typescript project, create new directory and execute this command :
+
+```bash
+$ tsc --init
+```
+
+Here is a minimum configurations from author :
+
+```json
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+Then on file **package.json**, change the build command :
+
+```json
+  "scripts": {
+    "build": "npx tsc"
+  },
+```
+
+Later you can build the project by execute this command :
+
+```bash
+$ yarn build
+```
+
+
+
+---
+
+
+
 ## Setup Testing Tools
 
 We will use mocha, chai and chai-http as our testing tools so we need to install this packages :
@@ -67,5 +115,56 @@ $ yarn add mocha chai chai-http -D
 
 
 
+---
+
+
+
 ## Create Basic Server
+
+Create new file name called **basic.ts** and wrote this code :
+
+```typescript
+import express, { Request, Response } from "express";
+const app = express();
+const port = "3000";
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
+```
+
+Then on file **package.json**, change the build command :
+
+```json
+  "scripts": {
+    "build": "npx tsc",
+    "start": "nodemon dist/basic.js"
+  },
+```
+
+Then you can build the project by executing this command :
+
+```bash
+$ yarn build
+```
+
+After transpillation done, execute this command to start the application :
+
+```bash
+$ yarn start
+```
+
+The output of basic server is :
+
+```
+Server is running at http://localhost:3000
+```
+
+
+
+## Create Test File
 
