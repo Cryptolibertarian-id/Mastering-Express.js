@@ -113,6 +113,14 @@ We will use mocha, chai and chai-http as our testing tools so we need to install
 $ yarn add mocha chai chai-http -D
 ```
 
+Then we need to install type definition for mocha and chai :
+
+```bash
+$ yarn add @types/mocha @types/chai -D
+```
+
+
+
 
 
 ---
@@ -166,5 +174,26 @@ Server is running at http://localhost:3000
 
 
 
+---
+
+
+
 ## Create Test File
 
+Add test command on file **package.json** :
+
+```json
+  "scripts": {
+    "build": "npx tsc",
+    "start": "nodemon dist/basic.js",
+    "test": "mocha -r ts-node/register 'tests/**/*.ts'"
+  },
+```
+
+Later you can test the project by executing this command :
+
+```bash
+$ yarn test
+```
+
+Create tests directory and then
