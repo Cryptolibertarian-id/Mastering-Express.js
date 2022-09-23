@@ -57,3 +57,15 @@ $ yarn add @types/node @types/express -D
 
 
 
+## Setup Testing Tools
+
+We will use mocha, chai and chai-http as our testing tools so we need to install this packages :
+
+```bash
+$ yarn add mocha chai chai-http -D
+```
+
+
+
+## Create Basic Server
+
